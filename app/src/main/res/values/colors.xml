@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="movie_title">#4c4c4c</color>
+
+    <!--normal colors-->
+    <color name="darkTextColor">#020000</color>
+
+    <color name="orange_200">#FF5722</color>
+    <color name="blue_500">#00BCD4</color>
+    <color name="blue_700">#0097A7</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <!--colors for light mode-->
+    <color name="colorblack">#000000</color>
+    <color name="whiteTextColor">#fff</color>
+
+
+    <color name="mapboxWhite">#ffffff</color>
+    <color name="mapboxBlue">#4264fb</color>
+    <color name="mapboxGrayLight">#c6d2e1</color>
+</resources>
