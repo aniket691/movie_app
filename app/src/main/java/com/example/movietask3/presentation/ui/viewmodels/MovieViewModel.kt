@@ -17,11 +17,6 @@ import retrofit2.Response
 class MovieViewModel(context: Context, private val repository: MovieRepository) :
     ViewModel() {
 
-    private val allMoviesDatabase: LiveData<List<Movie>>
-        get() {
-            TODO()
-        }
-
     //mutable live data for holding movie api data
     val moviesApiData: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
 

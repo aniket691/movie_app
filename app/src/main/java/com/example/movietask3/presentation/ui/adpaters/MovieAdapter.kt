@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.movietask3.R
 import com.example.movietask3.databinding.ItemArticlePreviewsBinding
 import com.example.movietask3.domain.model.Movie
 import com.example.movietask3.presentation.ui.viewmodels.MovieViewModel
@@ -18,8 +20,6 @@ class MovieAdapter(
     private val context: Context,
     private val viewModel: MovieViewModel
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
-
-    private var movieList = emptyList<Movie>()
 
     inner class MovieViewHolder(val binding: ItemArticlePreviewsBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -50,14 +50,27 @@ class MovieAdapter(
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = differ.currentList[position]
         with(holder) {
-            binding.mvTitle.text = movie.title
+
+            binding.movieTitleTv.text = movie.title
+            binding.movieDescTv.text = movie.short_summery
+            binding.year.text = movie.year.toString()
+            binding.runtime.text = movie.runtime.toString()
+            binding.cast.text = movie.cast
+
+            Glide
+                .with(itemView.context)
+                .load(movie.movie_poster)
+                .centerCrop()
+                .placeholder(R.drawable.profile_pic)
+                .into(binding.posterIv);
+
             binding.buttonDel.setOnClickListener {
                 viewModel.deleteMovie(movie)
                 Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
             }
 
             binding.buttonFav.setOnClickListener {
-                viewModel.addToFav(movieList[position].imdb_id)
+                viewModel.addToFav(differ.currentList[position].imdb_id)
                 Toast.makeText(context, "Added to Favourites", Toast.LENGTH_SHORT).show()
             }
         }

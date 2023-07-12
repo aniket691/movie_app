@@ -8,7 +8,7 @@ import com.example.movietask3.domain.model.Movie
 @Dao
 interface MovieDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun upsert(movie: List<Movie>)
 
     @Query("SELECT * FROM movies")

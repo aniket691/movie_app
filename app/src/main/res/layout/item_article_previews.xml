@@ -3,102 +3,127 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/card_margin"
-        android:elevation="3dp"
-        app:cardCornerRadius="@dimen/card_movie_radius">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/thumbnail"
+                android:id="@+id/posterIv"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/movie_cover_height"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_height="170dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/profile_pic" />
+                android:src="@drawable/profile_pic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/mvTitle"
-                android:layout_width="match_parent"
+                android:id="@+id/movieTitleTv"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/thumbnail"
-                android:paddingLeft="@dimen/movie_title_padding"
-                android:paddingTop="@dimen/movie_title_padding"
-                android:paddingRight="@dimen/movie_title_padding"
-                android:text="some text"
-                android:textColor="@color/movie_title"
-                android:textSize="@dimen/movie_title" />
+                android:padding="8dp"
+                android:text="Captain America : The First Avenger"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/posterIv" />
 
-            <!--            <TextView-->
-            <!--                android:id="@+id/mvYear"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_below="@+id/mvTitle"-->
-            <!--                android:paddingLeft="@dimen/movie_title_padding"-->
-            <!--                android:paddingTop="@dimen/movie_title_padding"-->
-            <!--                android:paddingRight="@dimen/movie_title_padding"-->
-            <!--                android:text="some text"-->
-            <!--                android:textColor="@color/movie_title"-->
-            <!--                android:textSize="@dimen/movie_title" />-->
+            <TextView
+                android:id="@+id/movieDescTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-12dp"
+                android:padding="8dp"
+                android:text="During World War II, Steve Rogers decides to volunteer in an experiment that transforms his weak body. He must now battle a secret Nazi organisation headed by Johann Schmidt to defend his nation."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/movieTitleTv" />
 
-            <!--            <TextView-->
-            <!--                android:id="@+id/mvRunTime"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_below="@+id/mvYear"-->
-            <!--                android:paddingLeft="@dimen/movie_title_padding"-->
-            <!--                android:paddingTop="@dimen/movie_title_padding"-->
-            <!--                android:paddingRight="@dimen/movie_title_padding"-->
-            <!--                android:text="some text"-->
-            <!--                android:textColor="@color/movie_title"-->
-            <!--                android:textSize="@dimen/movie_title" />-->
+            <TextView
+                android:id="@+id/year"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="year"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/movieDescTv" />
+
+            <TextView
+                android:id="@+id/runtime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="runtime"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/year" />
 
 
-            <!--            <TextView-->
-            <!--                android:id="@+id/mvCast"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_below="@+id/mvRunTime"-->
-            <!--                android:paddingLeft="@dimen/movie_title_padding"-->
-            <!--                android:paddingRight="@dimen/movie_title_padding"-->
-            <!--                android:paddingBottom="@dimen/user_rating_padding_bottom"-->
-            <!--                android:text="some text"-->
-            <!--                android:textSize="@dimen/movie_title" />-->
+            <TextView
+                android:id="@+id/cast"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="cast"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/runtime" />
 
+            <ImageButton
+                android:id="@+id/buttonFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_favorite_24"
+                android:text="Button"
+                app:layout_constraintEnd_toStartOf="@+id/buttonDel"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cast" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/mvTitle"
-                            android:gravity="center_horizontal"
-                            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/buttonDel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_delete_24"
+                android:text="Button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/buttonFav"
+                app:layout_constraintTop_toBottomOf="@id/cast" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                            <ImageButton
-                                android:id="@+id/buttonFav"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/baseline_favorite_24" />
-
-                            <ImageButton
-                                android:id="@+id/buttonDel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/baseline_delete_24" />
-                        </LinearLayout>
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
