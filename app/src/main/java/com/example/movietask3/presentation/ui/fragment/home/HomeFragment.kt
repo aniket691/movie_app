@@ -57,14 +57,9 @@ class HomeFragment : Fragment() {
 
         setupRecyclerView()
 
-        // Check if the device has an internet connection
-        val isInternetConnected = isInternetConnected(requireContext())
-
-        if (isInternetConnected) {
-            //save the data in the database
+        if (isInternetConnected(requireContext())) {
             viewModel.saveMovies("1.json")
         } else {
-            // Display a message indicating no internet connection
             showNoInternetConnectionMessage()
         }
 
