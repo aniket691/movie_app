@@ -1,7 +1,7 @@
 # Movie App
 Explore an extensive collection of movies from various genres, eras, and countries, all conveniently organized in one place.
 
-#Task Objective
+# Task Objective
 Create an Android application using Kotlin with three fragments.<br>
 On the first fragment display data from the API below using Retrofit and store it in DB.<br>
 http://task.auditflo.in/1.json<br>
