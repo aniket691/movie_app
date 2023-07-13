@@ -24,6 +24,9 @@ import com.example.movietask3.domain.db.MovieDatabase
 import com.example.movietask3.domain.repository.MovieRepository
 import com.example.movietask3.presentation.ui.viewmodels.MovieViewModel
 import com.example.movietask3.presentation.ui.viewmodels.MovieViewModelFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 

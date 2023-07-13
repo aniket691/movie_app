@@ -46,6 +46,10 @@ class MovieRepository(private val movieDao: MovieDao, private val movieService: 
         return movieDao.getFavouriteMovies()
     }
 
+    suspend fun getMovieRowCount(): Int {
+        return movieDao.getMovieRowCount()
+    }
+
     //get movies from api
     suspend fun getMoviesApi(fileName: String) =
         movieService.getMovies(fileName)

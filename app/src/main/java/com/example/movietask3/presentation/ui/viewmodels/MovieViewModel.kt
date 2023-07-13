@@ -10,6 +10,7 @@ import com.example.movietask3.common.Resource
 import com.example.movietask3.domain.model.Movie
 import com.example.movietask3.data.remote.dto.MovieResponse
 import com.example.movietask3.domain.repository.MovieRepository
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -28,8 +29,10 @@ class MovieViewModel(context: Context, private val repository: MovieRepository) 
     }
 
     fun saveMovies(fileName: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.saveMovies(fileName)
+        CoroutineScope(Dispatchers.IO).launch {
+            if (repository.getMovieRowCount() == 0) {
+                repository.saveMovies(fileName)
+            }
         }
     }
 

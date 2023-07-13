@@ -23,4 +23,7 @@ interface MovieDao {
     @Query("SELECT * FROM movies WHERE isFav=1")
     fun getFavouriteMovies(): LiveData<List<Movie>>
 
+    @Query("SELECT COUNT(*) FROM movies")
+    suspend fun getMovieRowCount(): Int
+
 }
