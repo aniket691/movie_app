@@ -40,5 +40,5 @@ XML
 
 # Assumptions
 Data will be stored in the database at the time of fetching from the API<br>
-If all the data in the database is deleted then again data is fetched from the databasebr>
+If all the data in the database is deleted then again data is fetched from the database<br>
 The data at the end of the scrolling will not be stored in the database 
