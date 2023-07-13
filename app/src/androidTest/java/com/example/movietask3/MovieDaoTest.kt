@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.movietask3.domain.db.MovieDao
 import com.example.movietask3.domain.db.MovieDatabase
+import com.example.movietask3.domain.model.Movie
 import kotlinx.coroutines.runBlocking
 import org.junit.*
 
@@ -28,27 +29,28 @@ class MovieDaoTest {
 
     @Test
     fun insertQuote_expectedSingleQuote() = runBlocking {
-//        val quote = Quote(0, "This is a test quote", "CheezyCode")
-//        quotesDao.insertQuote(quote)
-//
-//        val result = quotesDao.getQuotes().getOrAwaitValue()
-//
-//        Assert.assertEquals(1, result.size)
-//        Assert.assertEquals("This is a test quote", result[0].text)
+        val movie = Movie(
+            imdb_id = "tt1234567",
+            title = "Example Movie",
+            year = 2023,
+            summary = "This is an example movie.",
+            short_summery = "Short summary",
+            genres = "Action, Thriller",
+            runtime = 120,
+            youtube_trailer = "https://www.youtube.com/watch?v=12345",
+            rating = 7.5,
+            movie_poster = "https://example.com/poster.jpg",
+            director = "John Doe",
+            writers = "Jane Smith",
+            cast = "Actor A, Actress B",
+            isFav = 0,
+            iaDel = 0
+        )
+        moviesDao.upsert(listOf(movie))
+        val result = moviesDao.getAllMovies().getOrAwaitValue()
+        Assert.assertEquals(1, result.size)
+        Assert.assertEquals("Example Movie", result[0].title)
     }
-
-    @Test
-    fun deleteQuote_expectedNoResults() = runBlocking {
-//        val quote = Quote(0, "This is a test quote", "CheezyCode")
-//        quotesDao.insertQuote(quote)
-//
-//        quotesDao.delete()
-//
-//        val result = quotesDao.getQuotes().getOrAwaitValue()
-//
-//        Assert.assertEquals(0, result.size)
-    }
-
 
     @After
     fun tearDown() {

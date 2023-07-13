@@ -53,9 +53,14 @@ class HomeFragment : Fragment() {
 
         setupRecyclerView()
 
-        //get movie data from ai and store in database
-        viewModel.getAllMovies("1.json")
-
+        //using viewModel so that when the data in the database is empty then we can again fetch from api
+        viewModel.getAllMoviesDatabase().observe(viewLifecycleOwner) { value ->
+            Log.d("TAG: ==>", value.toString())
+            if (value.isEmpty()) {
+                //fetch the data from the api and save in the database
+                viewModel.getAllMovies("1.json")
+            }
+        }
         //fetching data from database
         viewModel.getAllMoviesDatabase().observe(viewLifecycleOwner) { value ->
             Log.d("TAG: ==>", value.toString())

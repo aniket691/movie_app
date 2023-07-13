@@ -21,9 +21,7 @@ class MovieRepository(private val movieDao: MovieDao, private val movieService: 
         if (result.isSuccessful && result.body() != null) {
             movieMutLiveDataApi.postValue(result.body())
             if (result.body() != null) {
-                if (result.body()!!.movieList.isEmpty()) {
-                    insertMovieList(result.body()!!.toMovieList())
-                }
+                insertMovieList(result.body()!!.toMovieList())
             }
         }
     }
