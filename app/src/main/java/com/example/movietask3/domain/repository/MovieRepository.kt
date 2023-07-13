@@ -10,16 +10,11 @@ import com.example.movietask3.domain.model.Movie
 
 class MovieRepository(private val movieDao: MovieDao, private val movieService: MovieApi) {
 
-    //data that holds movie api
-    private val movieMutLiveDataApi = MutableLiveData<MovieResponse>()
-    val moviesLiveDataApi: LiveData<MovieResponse>
-        get() = movieMutLiveDataApi
 
     //get data from api and store it in database
     suspend fun getMovies(fileName: String) {
         val result = movieService.getMovies(fileName)
         if (result.isSuccessful && result.body() != null) {
-            movieMutLiveDataApi.postValue(result.body())
             if (result.body() != null) {
                 insertMovieList(result.body()!!.toMovieList())
             }
@@ -27,7 +22,7 @@ class MovieRepository(private val movieDao: MovieDao, private val movieService: 
     }
 
     //function for inserting movie into the database
-    private suspend fun insertMovieList(movieList: List<Movie>) {
+    suspend fun insertMovieList(movieList: List<Movie>) {
         movieDao.upsert(movieList)
     }
 

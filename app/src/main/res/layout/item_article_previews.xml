@@ -26,6 +26,7 @@
                 android:layout_height="170dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/profile_pic"
+                app:layout_constraintBottom_toTopOf="@+id/movieTitleTv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +53,7 @@
                 android:layout_marginTop="-12dp"
                 android:padding="8dp"
                 android:text="During World War II, Steve Rogers decides to volunteer in an experiment that transforms his weak body. He must now battle a secret Nazi organisation headed by Johann Schmidt to defend his nation."
+                app:layout_constraintBottom_toTopOf="@+id/year"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,10 +68,12 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/runtime"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/movieDescTv" />
+
 
             <TextView
                 android:id="@+id/runtime"
@@ -80,11 +84,11 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/cast"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/year" />
-
 
             <TextView
                 android:id="@+id/cast"
@@ -95,6 +99,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/buttonFav"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -121,6 +126,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/buttonFav"
                 app:layout_constraintTop_toBottomOf="@id/cast" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

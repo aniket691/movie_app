@@ -1,4 +1,4 @@
-package `mockito-extensions`.movietask3
+package com.example.movietask3
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
