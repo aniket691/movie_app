@@ -27,9 +27,9 @@ class MovieViewModel(context: Context, private val repository: MovieRepository) 
         }
     }
 
-    fun getAllMovies(fileName: String) {
+    fun saveMovies(fileName: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getMovies(fileName)
+            repository.saveMovies(fileName)
         }
     }
 

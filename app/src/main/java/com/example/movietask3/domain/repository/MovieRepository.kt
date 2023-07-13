@@ -12,7 +12,7 @@ class MovieRepository(private val movieDao: MovieDao, private val movieService: 
 
 
     //get data from api and store it in database
-    suspend fun getMovies(fileName: String) {
+    suspend fun saveMovies(fileName: String) {
         val result = movieService.getMovies(fileName)
         if (result.isSuccessful && result.body() != null) {
             if (result.body() != null) {

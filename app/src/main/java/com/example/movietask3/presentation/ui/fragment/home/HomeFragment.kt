@@ -1,5 +1,9 @@
 package com.example.movietask3.presentation.ui.fragment.home
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -53,14 +57,17 @@ class HomeFragment : Fragment() {
 
         setupRecyclerView()
 
-        //using viewModel so that when the data in the database is empty then we can again fetch from api
-        viewModel.getAllMoviesDatabase().observe(viewLifecycleOwner) { value ->
-            Log.d("TAG: ==>", value.toString())
-            if (value.isEmpty()) {
-                //fetch the data from the api and save in the database
-                viewModel.getAllMovies("1.json")
-            }
+        // Check if the device has an internet connection
+        val isInternetConnected = isInternetConnected(requireContext())
+
+        if (isInternetConnected) {
+            //save the data in the database
+            viewModel.saveMovies("1.json")
+        } else {
+            // Display a message indicating no internet connection
+            showNoInternetConnectionMessage()
         }
+
         //fetching data from database
         viewModel.getAllMoviesDatabase().observe(viewLifecycleOwner) { value ->
             Log.d("TAG: ==>", value.toString())
@@ -85,7 +92,6 @@ class HomeFragment : Fragment() {
                             is Resource.Success -> {
                                 response.data?.let { movieResponse ->
                                     movieAdapter.addItems(movieResponse.toMovieList())
-                                    Log.d("TAG", "List Size == >: ${movieResponse.movieList.size}")
                                 }
                             }
                             //check error
@@ -112,6 +118,10 @@ class HomeFragment : Fragment() {
         return root
     }
 
+    private fun showNoInternetConnectionMessage() {
+        Toast.makeText(requireContext(), "No internet Connection", Toast.LENGTH_SHORT).show()
+    }
+
     private fun setupRecyclerView() {
         //setting up recycler view and movie data
         movieAdapter = MovieAdapter(requireContext(), viewModel)
@@ -119,6 +129,15 @@ class HomeFragment : Fragment() {
             adapter = movieAdapter
             layoutManager = LinearLayoutManager(activity)
         }
+    }
+
+    private fun isInternetConnected(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val networkCapabilities =
+            connectivityManager.getNetworkCapabilities(network) ?: return false
+        return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 
     override fun onDestroyView() {
